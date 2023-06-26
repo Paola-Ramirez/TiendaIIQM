@@ -8,25 +8,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-/*
- * @author Maria
- */
 @Service
-public class CategoriaServiceImpl implements CategoriaService{
+public class CategoriaServiceImpl implements CategoriaService {
+    
     @Autowired
     private CategoriaDao categoriaDao;
     
     @Override
-    @Transactional(readOnly = true)
+    @Transactional(readOnly=true)
     public List<Categoria> getCategorias(boolean activos) {
-        List<Categoria> lista= categoriaDao.findAll();
-        // para rewmover las categorias donde activo = falso
-        if (activos){
-            lista.removeIf(x ->x.isActivo());
+        List<Categoria> lista = categoriaDao.findAll();
+        if (activos) {
+            //para remover las categorias donde activo es igual a falso
+            lista.removeIf(x-> !x.isActivo());
         }
         return lista;
-    }
-    
+         }
     
 }

@@ -3,22 +3,16 @@ package com.TiendaIIQM.domain;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import lombok.Data;
-
-/**
- * @author Maria
- */
 @Data
 @Entity
-@Table (name="categoria")
-public class Categoria implements Serializable{
-    
-    //VERCION DE SERIALIZACION
-    private static final long serialVersionUID =1L;
-    
+@Table(name="categoria")
+public class Categoria implements Serializable {
+    //Version de seralizacion
+    private static final long serialVersionUID=1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id_categoria")
-    private long idCategoria; //Transforma en is_categoria
+    private long idCategoria;//Se convierte en id_Categoria
     private String descripcion;
     private String rutaImagen;
     private boolean activo;

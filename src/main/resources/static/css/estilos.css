@@ -4,16 +4,16 @@
     font-family: Comic Sans MS;
 }
 .PARRAFOSejemplo{
-    color : greenyellow;
+    color : teal;
     font-weight: bold;
     
 }
 .parrafoSecundario{
-    color : yellow;
-    font-size: 20px;
+    color : graytext;
+    font-size: 15px;
     font-weight: bold;
 }
 p{
-    Color: brown;
-    font-size: 15px;
+    Color: blue;
+    font-size: 10px;
 }
