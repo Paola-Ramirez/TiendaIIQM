@@ -1,4 +1,5 @@
 package com.TiendaIIQM.service;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,9 +16,7 @@ public interface FirebaseStorageService {
 
     //Ubicación donde se encuentra el archivo de configuración Json
     final String rutaJsonFile = "firebase";
-    
+
     //El nombre del archivo Json
     final String archivoJsonFile = "techshop-bfca1-firebase-adminsdk-cvvai-04fad46573.json";
 }
-
-

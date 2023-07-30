@@ -31,5 +31,4 @@ public class Categoria implements Serializable {
     @OneToMany
     @JoinColumn(name = "id_categoria")
     List<Producto> productos;
-
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.TiendaIIQM.controller;
 
 import com.TiendaIIQM.domain.Categoria;
@@ -20,11 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/pruebas")
 public class PruebasController {
+
     @Autowired
     private ProductoService productoService;
     @Autowired
     private CategoriaService categoriaService;
-    
+
     @GetMapping("/listado")
     public String listado(Model model) {
         var productos = productoService.getProductos(false);
@@ -43,6 +40,6 @@ public class PruebasController {
         model.addAttribute("totalProductos", productos.size());
         model.addAttribute("categorias", categorias);
         return "/pruebas/listado";
-      
+
     }
 }

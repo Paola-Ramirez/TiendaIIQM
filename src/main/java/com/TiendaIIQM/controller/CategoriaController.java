@@ -1,10 +1,9 @@
-
 package com.TiendaIIQM.controller;
 
 import com.TiendaIIQM.domain.Categoria;
 import com.TiendaIIQM.service.CategoriaService;
 import com.TiendaIIQM.service.Impl.FirebaseStorageServiceImpl;
-import java.util.List;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,20 +18,21 @@ import org.springframework.web.multipart.MultipartFile;
 @Slf4j
 @RequestMapping("/categoria")
 public class CategoriaController {
+
     @Autowired
-    CategoriaService categoriaService;
-    
+    private CategoriaService categoriaService;
+
     @Autowired
     private FirebaseStorageServiceImpl firebaseStorageService;
-    
+
     @GetMapping("/listado")
     public String inicio(Model model) {
-        log.info("Consumiendo el recurso /categoria/listado");
-        List<Categoria> categorias = categoriaService.getCategorias(false);
+        var categorias = categoriaService.getCategorias(false);
         model.addAttribute("categorias", categorias);
         model.addAttribute("totalCategorias", categorias.size());
         return "/categoria/listado";
     }
+
     @GetMapping("/nuevo")
     public String categoriaNuevo(Categoria categoria) {
         return "/categoria/modifica";
@@ -40,13 +40,13 @@ public class CategoriaController {
 
     @PostMapping("/guardar")
     public String categoriaGuardar(Categoria categoria,
-            @RequestParam("imagenFile") MultipartFile imagenFile) {        
+            @RequestParam("imagenFile") MultipartFile imagenFile) {
         if (!imagenFile.isEmpty()) {
             categoriaService.save(categoria);
             categoria.setRutaImagen(
                     firebaseStorageService.cargaImagen(
-                            imagenFile, 
-                            "categoria", 
+                            imagenFile,
+                            "categoria",
                             categoria.getIdCategoria()));
         }
         categoriaService.save(categoria);
@@ -65,5 +65,4 @@ public class CategoriaController {
         model.addAttribute("categoria", categoria);
         return "/categoria/modifica";
     }
-    
 }
